@@ -1,0 +1,186 @@
+<div class="wrapper__bg">
+  <app-progress-bar *ngIf="loading"></app-progress-bar>
+  <div class="container-fluid">
+    <div class="row pt-4">
+      <div class="col-lg-4 offset-lg-4">
+        <div class="card" style="width: 30rem">
+          <div class="card-header text-center">{{ op }} Producto</div>
+          <div class="card-body">
+            <form [formGroup]="formProduct" (ngSubmit)="addProduct()">
+              <input
+                formControlName="handle"
+                type="text"
+                class="form-control"
+                placeholder="Ingrese el identificador"
+              />
+              <div
+                *ngIf="formProduct.get('handle')!.errors?.['required']  &&
+              formProduct.get('handle')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <input
+                formControlName="title"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese el titulo"
+              />
+              <div
+                *ngIf="formProduct.get('title')!.errors?.['required']  &&
+              formProduct.get('title')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <input
+                formControlName="description"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese la descripción"
+              />
+              <div
+                *ngIf="formProduct.get('description')!.errors?.['required']  &&
+              formProduct.get('description')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <input
+                formControlName="sku"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese sku"
+              />
+              <div
+                *ngIf="
+                  formProduct.get('sku')?.hasError('required') &&
+                  formProduct.get('sku')?.touched
+                "
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <input
+                formControlName="grams"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese los gramos"
+              />
+              <div
+                *ngIf="formProduct.get('grams')!.errors?.['required'] &&
+              formProduct.get('grams')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <div
+                *ngIf="formProduct.get('grams')!.errors?.['pattern'] &&
+              formProduct.get('grams')?.touched"
+                class="text-danger"
+              >
+                Ingrese un número válido
+              </div>
+              <input
+                formControlName="stock"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese el stock"
+              />
+              <div
+                *ngIf="formProduct.get('stock')!.errors?.['required'] &&
+              formProduct.get('stock')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <div
+                *ngIf="formProduct.get('stock')!.errors?.['pattern'] &&
+              formProduct.get('stock')?.touched"
+                class="text-danger"
+              >
+                Ingrese un número entero
+              </div>
+
+              <input
+                formControlName="price"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese el precio"
+              />
+              <div
+                *ngIf="formProduct.get('price')!.errors?.['required'] &&
+              formProduct.get('price')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <div
+                *ngIf="formProduct.get('price')!.errors?.['pattern'] &&
+              formProduct.get('price')?.touched"
+                class="text-danger"
+              >
+                Ingrese un número válido
+              </div>
+
+              <input
+                formControlName="comparePrice"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese el precio comparativo"
+              />
+              <div
+                *ngIf="formProduct.get('comparePrice')!.errors?.['required'] &&
+              formProduct.get('comparePrice')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <div
+                *ngIf="formProduct.get('comparePrice')!.errors?.['pattern'] &&
+              formProduct.get('comparePrice')?.touched"
+                class="text-danger"
+              >
+                Ingrese un número válido
+              </div>
+
+              <input
+                formControlName="barcode"
+                type="text"
+                class="form-control mt-3"
+                placeholder="Ingrese el código de barras"
+              />
+              <div
+                *ngIf="formProduct.get('barcode')!.errors?.['required'] &&
+              formProduct.get('barcode')?.touched"
+                class="text-danger"
+              >
+                Campo requerido
+              </div>
+              <div class="row mt-3 text-center">
+                <div class="col-lg-6">
+                  <button
+                    routerLink="/dashboard"
+                    type="button"
+                    class="btn btn-secondary"
+                  >
+                    Volver
+                  </button>
+                </div>
+                <div class="col-lg-6">
+                  <button
+                    [disabled]="formProduct.invalid"
+                    type="submit"
+                    class="btn btn-info"
+                  >
+                    Aceptar
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

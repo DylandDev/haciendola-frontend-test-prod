@@ -1,0 +1,12 @@
+.navbar__bg {
+  background: rgb(24, 14, 170);
+  background: linear-gradient(
+    67deg,
+    rgba(24, 14, 170, 1) 0%,
+    rgba(117, 88, 145, 0.895) 37%
+  );
+}
+
+.navbar__btn {
+  background: rgb(214, 18, 18);
+}

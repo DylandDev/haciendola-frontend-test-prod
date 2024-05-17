@@ -1,0 +1,63 @@
+<div>
+  <app-progress-bar *ngIf="loading"></app-progress-bar>
+
+  <div *ngIf="!loading" class="container-fluid">
+    <div class="container">
+      <div class="title mb-4">
+        <h2>Productos</h2>
+        <button type="button" class="btn btn-info mt-2" routerLink="/add">
+          Agregar Producto
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" [width]="150">Handle</th>
+              <th scope="col" [width]="150">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">Sku</th>
+              <th scope="col">Grams</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Price</th>
+              <th scope="col" [width]="150">Compare Price</th>
+              <th scope="col">Barcode</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="listProducts">
+            <tr *ngFor="let product of listProducts">
+              <th scope="row">{{ product.id }}</th>
+              <td>{{ product.handle }}</td>
+              <td>{{ product.title }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.sku }}</td>
+              <td>{{ product.grams }}</td>
+              <td>{{ product.stock }}</td>
+              <td>{{ product.price | currency }}</td>
+              <td>{{ product.comparePrice | currency }}</td>
+              <td>{{ product.barcode }}</td>
+              <td>
+                <a
+                  [routerLink]="['/edit', product.id]"
+                  type="button"
+                  class="btn btn-info btn-sm"
+                  ><fa-icon [icon]="faEdit"></fa-icon
+                ></a>
+                <a
+                  type="button"
+                  (click)="deleteProduct(product.id!)"
+                  class="btn btn-danger btn-sm ms-1"
+                >
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+          <div class="mt-1" *ngIf="listProducts.length == 0">No hay datos</div>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

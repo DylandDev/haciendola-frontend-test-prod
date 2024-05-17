@@ -1,0 +1,13 @@
+<nav *ngIf="isMenuRequired" class="navbar navbar-expand-lg navbar__bg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white">CRUD Productos</a>
+
+    <button
+      class="btn navbar__btn text-white rounded-3"
+      type="button"
+      (click)="onLogout()"
+    >
+      Logout
+    </button>
+  </div>
+</nav>
